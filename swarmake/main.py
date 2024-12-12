@@ -5,6 +5,7 @@ import subprocess
 import click
 import shutil
 import time
+from trogon import tui
 
 from swarmake.logger import setup_logging, LOGGER
 logging = LOGGER.bind(context=__name__)
@@ -43,6 +44,7 @@ def clean_build_dir(project_name=None):
     else:
         logging.info(f"Build directory does not exist", build_dir=build_dir)
 
+@tui()
 @click.group()
 @click.version_option(package_name="swarmake", message="%(prog)s v%(version)s    Fetch, build, and run the OpenSwarm.")
 @click.pass_context
